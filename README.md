@@ -41,8 +41,6 @@ python3 scripts/run_experiments.py --master http://localhost:8080 --ends 1e9,1e1
 WORKERS=4 scripts/gcp_up.sh                                   # або окремі VM у Google Cloud
 gcloud compute instances stop parcs-master parcs-worker-{1..4} --zone europe-central2-a   # зупинити після замірів
 scripts/gcp_down.sh                                           # видалити VM, коли кластер більше не потрібен
-
-python report/make_report.py                                  # звіт .docx з results/ (python-docx)
 ```
 
 Заміри в `results/` виконано в Google Cloud (зона europe-central2-a): master і 4 воркери,
