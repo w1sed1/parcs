@@ -1,0 +1,10 @@
+{
+ "year": 2026,
+ "zone": "europe-central2-a (Варшава)",
+ "workers": 4,
+ "machine_type": "n1-standard-1",
+ "machine_text": "1 vCPU",
+ "ram_gb": "3,75",
+ "cpu": "Intel Xeon 2,20 ГГц, Broadwell",
+ "os": "Container-Optimized OS 121 (cos-stable-121-18867-652-79)"
+}

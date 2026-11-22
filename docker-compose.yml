@@ -1,0 +1,22 @@
+# Кластер PARCS у Docker на одній машині: master + N воркерів (локальна перевірка).
+#   docker compose up -d --scale worker=4   ->  вебінтерфейс http://localhost:8080
+# Воркер реєструється на master під IP свого контейнера (`hostname -I`, див.
+# generate_config.sh в образі), тому фіксована IP-адреса потрібна лише master.
+services:
+  master:
+    image: hummer12007/parcs-node
+    environment:
+      PARCS_ARGS: "master"
+    ports: ["8080:8080"]
+    networks: {parcs: {ipv4_address: 172.30.0.10}}
+  worker:
+    image: hummer12007/parcs-node
+    environment:
+      PARCS_ARGS: "worker 172.30.0.10"
+    depends_on: [master]
+    networks: [parcs]
+
+networks:
+  parcs:
+    ipam:
+      config: [{subnet: 172.30.0.0/24}]
